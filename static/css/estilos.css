@@ -990,3 +990,205 @@ text-decoration:none;
 margin-top:15px;
 
 }
+/* RESPONSIVE MOVIL */
+
+@media(max-width:768px){
+
+.contenedor{
+
+padding:15px;
+
+}
+
+.formulario-card{
+
+width:100% !important;
+
+padding:20px !important;
+
+border-radius:20px;
+
+}
+
+h1{
+
+font-size:28px !important;
+
+}
+
+p{
+
+font-size:16px !important;
+
+}
+
+.grupo input,
+.grupo select{
+
+width:100%;
+
+font-size:16px;
+
+}
+
+button{
+
+width:100%;
+
+padding:14px;
+
+}
+
+.card{
+
+width:100% !important;
+
+padding:25px !important;
+
+margin:10px;
+
+}
+
+.card h1{
+
+font-size:30px !important;
+
+}
+
+.card p{
+
+font-size:16px !important;
+
+}
+
+.btn{
+
+width:100%;
+
+display:block;
+
+text-align:center;
+
+}
+
+.redes-flotantes{
+
+right:8px;
+
+transform:scale(.85);
+
+}
+
+}
+/* ===== RESPONSIVE GLOBAL ===== */
+
+*{
+box-sizing:border-box;
+}
+
+body{
+
+overflow-x:hidden;
+
+}
+
+.contenedor{
+
+width:100%;
+padding:15px;
+
+}
+
+.banner{
+
+width:100% !important;
+max-width:900px;
+
+height:auto;
+
+display:block;
+
+margin:auto;
+
+border-radius:20px;
+
+}
+
+.card,
+.curso-card,
+.formulario-card{
+
+width:100% !important;
+
+max-width:850px;
+
+margin:auto;
+
+padding:25px;
+
+border-radius:25px;
+
+}
+
+img{
+
+max-width:100%;
+height:auto;
+
+}
+
+button{
+
+padding:14px 22px;
+border:none;
+border-radius:15px;
+
+}
+
+@media(max-width:768px){
+
+h1{
+
+font-size:30px !important;
+
+}
+
+h2{
+
+font-size:22px !important;
+
+}
+
+p,
+li{
+
+font-size:16px !important;
+
+line-height:1.7;
+
+}
+
+.card,
+.curso-card,
+.formulario-card{
+
+padding:18px !important;
+
+margin:10px auto !important;
+
+}
+
+button{
+
+width:100%;
+
+}
+
+.redes-flotantes{
+
+right:5px;
+transform:scale(.85);
+
+}
+
+}
