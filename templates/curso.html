@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>{{curso.titulo}}</title>
+
+<link rel="stylesheet"
+href="{{ url_for('static', filename='css/estilos.css') }}">
+
+</head>
+
+<body>
+
+<div class="header">
+
+<div class="logo">
+
+🚗 Autoescuela SUROESTE
+
+</div>
+
+<div class="menu">
+
+<a href="/">🏠 Inicio</a>
+
+<a href="/separar_cupo">📅 Separar cupo</a>
+
+<a href="https://wa.me/573113416655">
+
+📞 3113416655
+
+</a>
+
+</div>
+
+</div>
+
+<div class="info-bar">
+
+📍 Calle 50 #49-12 Local 103 – Andes (Ant.) |
+🕒 Lun-Mar-Jue-Vie-Sáb-Dom: 8 a.m.–5 p.m. |
+❌ Miércoles cerrado
+
+</div>
+
+<div class="contenedor">
+
+<div class="detalle-curso">
+
+<div class="lado-imagen">
+
+<img
+class="imagen-curso"
+src="{{ url_for('static',
+filename='img/' + curso.imagen) }}">
+
+<div class="promo-card">
+
+🔥 {{curso.etiqueta}}
+
+</div>
+
+</div>
+
+<div class="lado-info">
+
+<div class="card info-card">
+
+<h1>
+
+{{curso.titulo}}
+
+</h1>
+
+<p class="subtitulo">
+
+{{curso.descripcion}}
+
+</p>
+
+<h2 style="color:green;font-size:45px;">
+
+{{curso.precio}}
+
+</h2>
+
+<p>
+
++ Licencia aproximada:
+{{curso.licencia}}
+
+</p>
+
+<hr>
+
+<h3>✅ Incluye:</h3>
+
+<ul>
+
+{% for item in curso.incluye %}
+
+<li>{{item}}</li>
+
+{% endfor %}
+
+</ul>
+
+<center>
+
+<a href="/separar_cupo?curso={{curso.titulo}}">
+
+<button>
+
+🚀 Iniciar proceso
+
+</button>
+
+</a>
+
+</center>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</body>
+
+</html>

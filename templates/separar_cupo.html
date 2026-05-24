@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Separar Cupo</title>
+
+<link rel="stylesheet"
+href="{{ url_for('static', filename='css/estilos.css') }}">
+
+</head>
+
+<body>
+
+<div class="contenedor">
+
+<div class="formulario-card">
+
+<h1 class="titulo-form">
+📅 Separar Cupo
+</h1>
+
+<p class="subtitulo-form">
+Completa la información para iniciar tu proceso
+</p>
+
+
+<div class="edad-box">
+
+🎓 Curso seleccionado:
+
+<strong>
+{{curso}}
+</strong>
+
+</div>
+
+
+<form method="POST" enctype="multipart/form-data">
+
+
+<div class="grupo">
+
+<label>👤 Nombre completo</label>
+
+<input
+name="nombre"
+type="text"
+placeholder="Escribe tu nombre completo"
+required>
+
+</div>
+
+
+
+<div class="grupo">
+
+<label>🪪 Tipo documento</label>
+
+<select
+name="tipo_documento"
+required>
+
+<option value="">
+Seleccione una opción
+</option>
+
+<option>Cédula ciudadanía</option>
+<option>Tarjeta identidad</option>
+<option>Cédula extranjería</option>
+<option>Pasaporte</option>
+<option>PPT</option>
+
+</select>
+
+</div>
+
+
+
+<div class="grupo">
+
+<label>🔢 Documento</label>
+
+<input
+name="documento"
+type="number"
+required>
+
+</div>
+
+
+
+<div class="grupo">
+
+<label>📞 Celular</label>
+
+<input
+name="celular"
+type="number"
+required>
+
+</div>
+
+
+
+<div class="grupo">
+
+<label>📧 Correo</label>
+
+<input
+name="correo"
+type="email"
+required>
+
+</div>
+
+
+
+<div class="grupo">
+
+<label>🎂 Fecha nacimiento</label>
+
+<input
+name="fecha_nacimiento"
+type="date"
+required>
+
+</div>
+
+
+{% if curso and "C2" in curso %}
+
+<div class="grupo">
+
+<label>
+🚛 ¿Actualmente tiene licencia C1?
+</label>
+
+<select name="tiene_c1">
+
+<option>
+Seleccione
+</option>
+
+<option>Sí</option>
+
+<option>No</option>
+
+</select>
+
+<small>
+La categoría C2 requiere contar previamente con C1
+</small>
+
+</div>
+
+{% endif %}
+
+
+
+<div class="grupo">
+
+<label>
+📚 ¿Sabe leer y escribir?
+</label>
+
+<select
+name="sabe_leer"
+required>
+
+<option>
+Seleccione
+</option>
+
+<option>Sí</option>
+<option>No</option>
+
+</select>
+
+</div>
+
+
+
+<button
+type="button"
+onclick="mostrarPago()">
+
+🚀 Continuar
+
+</button>
+
+
+
+<div
+id="pagoBox"
+style="display:none;margin-top:30px;">
+
+
+<div class="edad-box">
+
+💰 ¿Cómo deseas continuar?
+
+</div>
+
+
+<div class="grupo">
+
+<label>
+Tipo de pago
+</label>
+
+<select name="tipo_pago">
+
+<option>
+Separar cupo mínimo ($200.000)
+</option>
+
+<option>
+Pagar curso completo
+</option>
+
+</select>
+
+</div>
+
+
+
+<div class="edad-box">
+
+<h3>
+🏦 Información de pago
+</h3>
+
+<p>
+Realiza el pago y luego adjunta el comprobante
+</p>
+
+
+<div class="pagos-grid">
+
+<div class="pago-card">
+
+🏦
+
+<h4>
+Bancolombia
+</h4>
+
+<small>
+
+Cuenta de ahorros
+
+<br><br>
+
+43800000522
+
+</small>
+
+</div>
+
+</div>
+
+
+<br>
+
+<strong>Titular:</strong>
+Autoescuela SUROESTE
+
+<br>
+
+<strong>NIT:</strong>
+901347011-1
+
+</div>
+
+
+
+<div class="grupo">
+
+<label>
+📎 Adjuntar comprobante
+</label>
+
+<input
+name="comprobante"
+type="file"
+accept="image/*,.pdf">
+
+</div>
+
+
+
+<div class="edad-box">
+
+📌 Si pagaste desde corresponsal o cualquier entidad:
+
+<br><br>
+
+Puedes subir el comprobante aquí o enviarlo directamente por WhatsApp.
+
+<br><br>
+
+<a
+href="https://wa.me/573113416655"
+target="_blank"
+class="btn-whatsapp">
+
+💬 Enviar comprobante por WhatsApp
+
+</a>
+
+</div>
+
+
+
+<button type="submit">
+
+✅ Finalizar proceso
+
+</button>
+
+
+</div>
+
+</form>
+
+</div>
+
+</div>
+
+
+<script>
+
+function mostrarPago(){
+
+document.getElementById(
+"pagoBox"
+).style.display="block";
+
+}
+
+</script>
+
+</body>
+
+</html>

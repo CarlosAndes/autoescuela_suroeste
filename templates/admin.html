@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
+
+<title>Separar Cupo</title>
+
+<link rel="stylesheet"
+href="{{ url_for('static',
+filename='css/estilos.css') }}">
+
+</head>
+
+<body>
+
+<div class="contenedor">
+
+<div class="formulario-card">
+
+<h1 class="titulo-form">
+
+📅 Separar Cupo
+
+</h1>
+
+<p class="subtitulo-form">
+
+Completa la información para iniciar tu proceso
+
+</p>
+
+
+<div class="edad-box">
+
+🎓 Curso seleccionado:
+
+<strong>
+
+{{curso}}
+
+</strong>
+
+</div>
+
+
+<div class="edad-box">
+
+💰 Para asegurar tu cupo puedes separar con:
+
+<strong>
+
+$100.000 o $200.000
+
+</strong>
+
+<br><br>
+
+Esto ayuda a reservar tu proceso y programación.
+
+</div>
+
+
+<form>
+
+<div class="grupo">
+
+<label>
+
+👤 Nombre completo
+
+</label>
+
+<input
+type="text"
+placeholder="Escribe tu nombre completo"
+required>
+
+</div>
+
+
+<div class="grupo">
+
+<label>
+
+🪪 Tipo de documento
+
+</label>
+
+<select required>
+
+<option value="">
+
+Seleccione una opción
+
+</option>
+
+<option>Cédula de ciudadanía (CC)</option>
+<option>Tarjeta de identidad (TI)</option>
+<option>Cédula de extranjería (CE)</option>
+<option>Pasaporte (PA)</option>
+<option>Permiso Protección Temporal (PPT)</option>
+<option>Registro Civil (RC)</option>
+<option>NUIP</option>
+
+</select>
+
+</div>
+
+
+<div class="grupo">
+
+<label>
+
+🔢 Número documento
+
+</label>
+
+<input
+type="number"
+placeholder="Ingrese el número"
+required>
+
+</div>
+
+
+<div class="grupo">
+
+<label>
+
+📞 Celular
+
+</label>
+
+<input
+type="number"
+placeholder="Número celular"
+required>
+
+</div>
+
+
+<div class="grupo">
+
+<label>
+
+📧 Correo electrónico
+
+</label>
+
+<input
+type="email"
+placeholder="ejemplo@gmail.com"
+required>
+
+</div>
+
+
+<div class="grupo">
+
+<label>
+
+🎂 Fecha nacimiento
+
+</label>
+
+<input
+type="date"
+required>
+
+</div>
+
+
+<div class="edad-box">
+
+⚠️ Las licencias pueden iniciarse desde los 16 años dependiendo de la categoría.
+
+</div>
+
+
+{% if "C2" in curso %}
+
+<div class="grupo">
+
+<label>
+
+🚛 ¿Actualmente tienes licencia C1?
+
+</label>
+
+<select required>
+
+<option value="">
+
+Seleccione una opción
+
+</option>
+
+<option>Sí</option>
+
+<option>No</option>
+
+</select>
+
+<small class="ayuda">
+
+La categoría C2 requiere contar previamente con C1.
+
+</small>
+
+</div>
+
+{% endif %}
+
+
+<div class="grupo">
+
+<label>
+
+📚 ¿Sabe leer y escribir?
+
+</label>
+
+<select required>
+
+<option value="">
+
+Seleccione una opción
+
+</option>
+
+<option>Sí</option>
+
+<option>No</option>
+
+</select>
+
+<small class="ayuda">
+
+Este requisito es importante para evaluaciones y señales.
+
+</small>
+
+</div>
+
+
+<div class="grupo">
+
+<label>
+
+💳 Método para separar cupo
+
+</label>
+
+<select required>
+
+<option value="">
+
+Seleccione una opción
+
+</option>
+
+<option>Nequi</option>
+
+<option>Bancolombia</option>
+
+<option>Transferencia bancaria</option>
+
+<option>Pago presencial</option>
+
+</select>
+
+</div>
+
+
+<div class="edad-box">
+
+🏦 DATOS DE PAGO
+
+<br><br>
+
+<strong>Banco:</strong>
+
+Bancolombia
+
+<br>
+
+<strong>Cuenta:</strong>
+
+AQUÍ_TU_NUMERO
+
+<br>
+
+<strong>Titular:</strong>
+
+Autoescuela SUROESTE
+
+<br>
+
+<strong>NIT:</strong>
+
+901347011-1
+
+<br><br>
+
+📲 Nequi:
+
+3113416655
+
+</div>
+
+
+<button>
+
+🚀 Continuar
+
+</button>
+
+</form>
+
+</div>
+
+</div>
+
+</body>
+
+</html>
