@@ -542,10 +542,34 @@ Gracias por confiar en Autoescuela SUROESTE ❤️
 
         """
 
+    precio = ""
+
+    curso_texto = str(curso)
+
+    if "A2 + B1" in curso_texto:
+        precio = obtener_precio("A2+B1")
+
+    elif "A2 + C1" in curso_texto:
+        precio = obtener_precio("A2+C1")
+
+    elif "A2" in curso_texto:
+        precio = obtener_precio("A2")
+
+    elif "B1" in curso_texto:
+        precio = obtener_precio("B1")
+
+    elif "C1" in curso_texto:
+        precio = obtener_precio("C1")
+
+    elif "C2" in curso_texto:
+        precio = obtener_precio("C2")
+
     return render_template(
         "separar_cupo.html",
-        curso=curso
+        curso=curso,
+        precio=precio
     )
+
 # PANEL ADMIN
 
 @app.route("/admin")

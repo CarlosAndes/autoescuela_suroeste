@@ -9,7 +9,8 @@
 
 <link rel="stylesheet"
 href="{{ url_for('static', filename='css/estilos.css') }}">
-
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 </head>
 
 <body>
@@ -28,15 +29,17 @@ alt="Autoescuela SUROESTE">
 
 <div class="menu">
 
-<a href="/">🏠 Inicio</a>
+    <a href="/">
+        <i class="fas fa-home"></i> Inicio
+    </a>
 
-<a href="#categorias">📚 Escoger curso</a>
+    <a href="#categorias">
+        <i class="fas fa-book-open"></i> Escoger curso
+    </a>
 
-<a href="https://wa.me/573113416655">
-
-📞 3113416655
-
-</a>
+    <a href="tel:3113416655">
+        <i class="fas fa-phone"></i> 3113416655
+    </a>
 
 </div>
 
@@ -111,50 +114,7 @@ Empieza hoy tu proceso con Autoescuela SUROESTE.
 
 </div>
 
-<h1>
 
-Obtén tu licencia sin complicaciones 🚗
-
-</h1>
-
-<p>
-
-Moto, carro, servicio público y camión.
-
-Empieza hoy tu proceso con Autoescuela SUROESTE.
-
-</p>
-
-<div class="hero-botones">
-
-<a href="#categorias">
-
-<button>
-
-📚 Escoger curso
-
-</button>
-
-</a>
-
-
-<a href="https://wa.me/573113416655">
-
-<button class="btn2">
-
-💬 Hablar por WhatsApp
-
-</button>
-
-</a>
-
-</div>
-
-</div>
-
-</div>
-
-</div>
 
 
 
@@ -162,94 +122,74 @@ Empieza hoy tu proceso con Autoescuela SUROESTE.
 
 <div class="stats">
 
-<a
-href="https://www.google.com/search?q=autoescuela+suroeste#lrd=0x8e4681b8c30f6f6f:0x6f3f0d8d1b3d6a1f,1"
-target="_blank"
-style="text-decoration:none;">
+    <a href="https://www.google.com/search?q=autoescuela+suroeste#lrd=0x8e4681b8c30f6f6f:0x6f3f0d8d1b3d6a1f,1"
+       target="_blank"
+       style="text-decoration:none;">
 
-<div class="stat-card">
+        <div class="stat-card">
 
-<h1>⭐ 4.9</h1>
+            <div class="stat-icon estrella">★</div>
 
-<p>
+            <h3>4.9</h3>
 
-Calificación Google
+            <p>Calificación Google</p>
 
-</p>
+            <small>Ver opiniones →</small>
 
-<small>
+        </div>
 
-Ver opiniones →
+    </a>
 
-</small>
+    <a href="https://maps.google.com/?q=Calle+50+%2349-12+Local+103+Andes+Antioquia"
+       target="_blank"
+       style="text-decoration:none;">
+
+        <div class="stat-card">
+
+            <div class="stat-icon verde">
+                <i class="fas fa-map-marker-alt"></i>
+            </div>
+
+            <h3>Andes</h3>
+
+            <p>Sede principal</p>
+
+            <small>Ver ubicación →</small>
+
+        </div>
+
+    </a>
+
+    <div class="stat-card">
+
+        <div class="stat-icon verde">
+            <i class="far fa-clock"></i>
+        </div>
+
+        <h3>Horario atención</h3>
+
+        <small>8 a.m. – 5 p.m.</small>
+
+    </div>
+
+    <div class="stat-card">
+
+        <div class="stat-icon verde">
+            <i class="fas fa-phone-alt"></i>
+        </div>
+
+        <h3>Contáctanos</h3>
+
+        <small>3113416655</small>
+
+    </div>
 
 </div>
 
 </a>
 
 
-<a
-href="https://maps.google.com/?q=Calle+50+%2349-12+Local+103+Andes+Antioquia"
-target="_blank"
-style="text-decoration:none;">
 
-<div class="stat-card">
-
-<h1>📍 Andes</h1>
-
-<p>
-
-Sede principal
-
-</p>
-
-<small>
-
-Ver ubicación →
-
-</small>
-
-</div>
-
-</a>
-
-
-<div class="stat-card">
-
-<h1>🕒</h1>
-
-<p>
-
-Horario atención
-
-</p>
-
-<small>
-
-8 a.m. – 5 p.m.
-
-</small>
-
-</div>
-
-
-<div class="stat-card">
-
-<h1>📞</h1>
-
-<p>
-
-Contáctanos
-
-</p>
-
-<small>
-
-3113416655
-
-</small>
-
-</div>
 
 </div>
 
@@ -344,9 +284,9 @@ Ver promoción
 
 <!-- CATEGORÍAS -->
 
-<h1 id="categorias">
+<h1 id="categorias" class="titulo-categorias">
 
-Escoge tu categoría
+ Escoge tu categoría
 
 </h1>
 
@@ -359,9 +299,7 @@ style="text-decoration:none;color:black;">
 <div class="card">
 
 <div class="icono">
-
-🏍
-
+    <img src="{{ url_for('static', filename='img/moto.png') }}" alt="Moto A2">
 </div>
 
 <h2>
@@ -388,9 +326,7 @@ style="text-decoration:none;color:black;">
 <div class="card">
 
 <div class="icono">
-
-🚘
-
+    <img src="{{ url_for('static', filename='img/carro.png') }}" alt="Carro B1">
 </div>
 
 <h2>
@@ -417,9 +353,7 @@ style="text-decoration:none;color:black;">
 <div class="card">
 
 <div class="icono">
-
-🚕
-
+    <img src="{{ url_for('static', filename='img/taxi.png') }}" alt="Servicio Público C1">
 </div>
 
 <h2>
@@ -446,9 +380,7 @@ style="text-decoration:none;color:black;">
 <div class="card">
 
 <div class="icono">
-
-🚛
-
+    <img src="{{ url_for('static', filename='img/camion.png') }}" alt="Camión C2">
 </div>
 
 <h2>
@@ -483,7 +415,7 @@ class="facebook"
 href="https://www.facebook.com/autoescuelasuroeste/?locale=es_LA"
 target="_blank">
 
-<i class="fab fa-facebook-f"></i>
+<img src="{{ url_for('static', filename='img/facebook.png') }}" alt="Facebook">
 
 </a>
 
@@ -492,8 +424,7 @@ target="_blank">
 class="instagram"
 href="https://www.instagram.com/autoescuela_suroeste/"
 target="_blank">
-
-<i class="fab fa-instagram"></i>
+<img src="{{ url_for('static', filename='img/instagram.png') }}" alt="Instagram">
 
 </a>
 
@@ -502,109 +433,72 @@ target="_blank">
 class="whats"
 href="https://wa.me/573113416655"
 target="_blank">
-
-<i class="fab fa-whatsapp"></i>
+<img src="{{ url_for('static', filename='img/whatsapp.png') }}" alt="WhatsApp">
 
 </a>
 
 </div>
+<section class="beneficios">
 
+    <div class="beneficio">
+        <div class="beneficio-icono">🛡️</div>
+        <h3>Formación de calidad</h3>
+        <p>Instructores certificados y enseñanza integral.</p>
+    </div>
+
+    <div class="beneficio">
+        <div class="beneficio-icono">🚗</div>
+        <h3>Cursos para todos</h3>
+        <p>Categorías A2, B1, C1 y C2 según tus necesidades.</p>
+    </div>
+
+    <div class="beneficio">
+        <div class="beneficio-icono">🕒</div>
+        <h3>Horarios flexibles</h3>
+        <p>Clases teóricas y prácticas que se ajustan a ti.</p>
+    </div>
+
+    <div class="beneficio">
+        <div class="beneficio-icono">✅</div>
+        <h3>Trámites rápidos</h3>
+        <p>Te acompañamos durante todo el proceso.</p>
+    </div>
+
+</section>
 
 <footer class="footer">
 
-<h2>
 
-🚗 Autoescuela SUROESTE
-
-</h2>
-
-<p>
-
-📍 Calle 50 #49-12 Local 103 — Andes Antioquia
-
-</p>
-
-<p>
-
-📞 3113416655
-
-</p>
-
-</footer>
-
-</a>
 
 <a
 href="https://www.instagram.com/autoescuela_suroeste/"
 target="_blank"
 title="Instagram">
 
-📷
 
-</a>
-
-<a
-href="https://wa.me/573113416655"
-target="_blank"
-title="WhatsApp">
-
-💬
-
-</a>
 
 </div>
 
-
-
 <!-- FOOTER -->
-
 <footer class="footer">
 
-<h2>
+    <h2>🚗 Autoescuela SUROESTE</h2>
 
-🚗 Autoescuela SUROESTE
+    <div class="footer-info">
 
-</h2>
+        <span>📍 Calle 50 #49-12 Local 103 — Andes Antioquia</span>
 
-<p>
+        <span>📞 3113416655</span>
 
-📍 Calle 50 #49-12 Local 103 — Andes Antioquia
+    </div>
 
-</p>
+    <p>✉️ Centro de enseñanza automovilístico</p>
 
-<p>
-
-📞 3113416655
-
-</p>
-
-<p>
-
-📧 Centro de enseñanza automovilístico
-
-</p>
-
-<p>
-
-Síguenos en nuestras redes sociales
-
-</p>
+    <p class="texto-redes">
+        Síguenos en nuestras redes sociales
+    </p>
 
 </footer>
-<a
-
-
-
-
-
-</body>
-</html>
-class="whatsapp"
-href="https://wa.me/573113416655">
-
-💬 WhatsApp
-
-</a>
 
 </body>
 </html>

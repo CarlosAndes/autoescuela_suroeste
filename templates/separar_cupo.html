@@ -20,7 +20,7 @@ href="{{ url_for('static', filename='css/estilos.css') }}">
 <div class="formulario-card">
 
 <h1 class="titulo-form">
-📅 Separar Cupo
+🚗 Reserva tu cupo
 </h1>
 
 <p class="subtitulo-form">
@@ -35,6 +35,8 @@ Completa la información para iniciar tu proceso
 <strong>
 {{curso}}
 </strong>
+
+<br><br>
 
 </div>
 
@@ -126,7 +128,12 @@ required>
 <input
 name="fecha_nacimiento"
 type="date"
+id="fecha_nacimiento"
 required>
+
+<small>
+Debe tener mínimo 16 años y 1 mes cumplido.
+</small>
 
 </div>
 
@@ -169,7 +176,9 @@ La categoría C2 requiere contar previamente con C1
 
 <select
 name="sabe_leer"
+id="sabe_leer"
 required>
+
 
 <option>
 Seleccione
@@ -219,7 +228,7 @@ Separar cupo mínimo ($200.000)
 </option>
 
 <option>
-Pagar curso completo
+Pagar curso completo (${{precio}})
 </option>
 
 </select>
@@ -331,19 +340,119 @@ class="btn-whatsapp">
 
 </div>
 
-
 <script>
 
 function mostrarPago(){
 
-document.getElementById(
-"pagoBox"
-).style.display="block";
+    const formulario =
+    document.querySelector("form");
+
+    if(!formulario.checkValidity()){
+
+        formulario.reportValidity();
+
+        return;
+
+    }
+
+    let sabeLeer =
+    document.getElementById(
+        "sabe_leer"
+    ).value;
+
+    if(sabeLeer === "No"){
+
+        alert(
+        "Lo sentimos. Para acceder a los programas de formación en conducción es requisito saber leer y escribir, ya que el estudiante debe comprender señales de tránsito, material pedagógico y evaluaciones teóricas obligatorias."
+        );
+
+        return;
+
+    }
+
+    document.getElementById(
+        "pagoBox"
+    ).style.display = "block";
 
 }
 
+window.onload = function(){
+
+    let fecha = new Date();
+
+    fecha.setFullYear(
+        fecha.getFullYear() - 16
+    );
+
+    fecha.setMonth(
+        fecha.getMonth() - 1
+    );
+
+    let anio = fecha.getFullYear();
+
+    let mes = String(
+        fecha.getMonth() + 1
+    ).padStart(2,'0');
+
+    let dia = String(
+        fecha.getDate()
+    ).padStart(2,'0');
+
+    document.getElementById(
+        "fecha_nacimiento"
+    ).max =
+    `${anio}-${mes}-${dia}`;
+
+}
+
+/* VALIDAR EDAD MÍNIMA */
+
+window.onload = function(){
+
+    let fecha = new Date();
+
+    fecha.setFullYear(
+        fecha.getFullYear() - 16
+    );
+
+    fecha.setMonth(
+        fecha.getMonth() - 1
+    );
+
+    let anio = fecha.getFullYear();
+
+    let mes = String(
+        fecha.getMonth() + 1
+    ).padStart(2,'0');
+
+    let dia = String(
+        fecha.getDate()
+    ).padStart(2,'0');
+
+    document.getElementById(
+        "fecha_nacimiento"
+    ).max =
+    `${anio}-${mes}-${dia}`;
+
+}
+
+/* MENSAJE SI NO SABE LEER */
+
+document.getElementById(
+    "sabe_leer"
+).addEventListener(
+    "change",
+    function(){
+
+        if(this.value === "No"){
+
+            alert(
+            "Lo sentimos. Para iniciar el proceso de formación en conducción es necesario saber leer y escribir, ya que durante el curso se deben comprender señales de tránsito, normas viales y contenidos teóricos obligatorios."
+            );
+
+        }
+
+    }
+);
+
 </script>
-
-</body>
-
-</html>
