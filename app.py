@@ -711,8 +711,18 @@ def admin():
     conexion.close()
 
     return render_template(
-        "admin.html",
-        datos=datos
+    "admin.html",
+    datos=datos
+)
+
+
+@app.route("/logout")
+def logout():
+
+    session.clear()
+
+    return redirect(
+        url_for("admin_login")
     )
 
 
@@ -720,3 +730,9 @@ if __name__=="__main__":
     app.run(
         debug=True
     )
+
+if __name__=="__main__":
+    app.run(
+        debug=True
+    )
+    
