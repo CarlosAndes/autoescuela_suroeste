@@ -5,33 +5,198 @@
 
 <meta charset="UTF-8">
 
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
+
 <title>
-Panel Admin
+Panel Administrativo
 </title>
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial,sans-serif;
+}
+
+body{
+
+background:#f4f7fb;
+padding:40px;
+
+}
+
+.header{
+
+background:white;
+padding:25px;
+border-radius:20px;
+box-shadow:0 5px 20px rgba(0,0,0,.08);
+margin-bottom:25px;
+
+}
+
+h1{
+
+color:#0d6efd;
+
+}
+
+.menu-admin{
+
+display:flex;
+gap:15px;
+margin-top:20px;
+flex-wrap:wrap;
+
+}
+
+.btn{
+
+padding:12px 20px;
+border:none;
+border-radius:12px;
+cursor:pointer;
+font-size:15px;
+font-weight:bold;
+text-decoration:none;
+display:inline-block;
+
+}
+
+.btn-verde{
+
+background:#198754;
+color:white;
+
+}
+
+.btn-azul{
+
+background:#0d6efd;
+color:white;
+
+}
+
+.btn-rojo{
+
+background:#dc3545;
+color:white;
+
+}
+
+.card{
+
+background:white;
+padding:25px;
+border-radius:20px;
+box-shadow:0 5px 20px rgba(0,0,0,.08);
+
+}
+
+table{
+
+width:100%;
+border-collapse:collapse;
+
+}
+
+th{
+
+background:#0d6efd;
+color:white;
+padding:15px;
+
+}
+
+td{
+
+padding:15px;
+border-bottom:1px solid #eee;
+
+}
+
+input{
+
+width:100%;
+padding:10px;
+border:1px solid #ddd;
+border-radius:10px;
+
+}
+
+.guardar{
+
+margin-top:20px;
+padding:15px 25px;
+background:#198754;
+color:white;
+border:none;
+border-radius:12px;
+font-size:16px;
+font-weight:bold;
+cursor:pointer;
+
+}
+
+</style>
 
 </head>
 
 <body>
 
+<div class="header">
+
 <h1>
-⚙️ Panel de precios
+
+🚗 Autoescuela SUROESTE
+
 </h1>
 
-<a href="/logout">
+<p>
 
-<button>
+Panel Administrativo
 
-🚪 Cerrar sesión
+</p>
 
-</button>
+<div class="menu-admin">
+
+<a
+class="btn btn-azul"
+target="_blank"
+href="https://docs.google.com/spreadsheets/d/1uhB6qw2P32S50GGEE6X8SrAjXQZ6VqXeHJDh9c8ND-k/edit">
+
+📋 Ver Inscripciones
 
 </a>
 
-<br><br>
+<a
+class="btn btn-rojo"
+href="/logout">
+
+🚪 Cerrar Sesión
+
+</a>
+
+</div>
+
+</div>
+
+<div class="card">
+
+<h2>
+
+⚙️ Administración de Precios
+
+</h2>
+
+<br>
 
 <form method="POST">
 
-<table border="1">
+<table>
 
 <tr>
 
@@ -70,15 +235,17 @@ value="{{ "{:,}".format(fila[1]|int).replace(",", ".") }}">
 
 </table>
 
-<br>
+<button
+class="guardar"
+type="submit">
 
-<button type="submit">
-
-💾 Guardar cambios
+💾 Guardar Cambios
 
 </button>
 
 </form>
+
+</div>
 
 </body>
 
