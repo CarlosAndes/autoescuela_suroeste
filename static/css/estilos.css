@@ -1596,7 +1596,7 @@ transform:scale(.85);
 
     color:#222;
 
-    white-space:nowrap;
+    white-space:normal;
 
 }
 
@@ -1752,5 +1752,46 @@ align-items:center;
 
 box-shadow:
 0 5px 20px rgba(0,0,0,.08);
+
+}
+/* ===== AJUSTES PC ===== */
+
+@media(min-width:1200px){
+
+    .contenedor{
+        max-width:1400px;
+        margin:auto;
+    }
+
+    .stats{
+        grid-template-columns:
+        repeat(4,1fr);
+    }
+
+    .stat-card{
+        min-height:260px;
+    }
+
+    .stat-card h3{
+        font-size:30px !important;
+        white-space:normal !important;
+    }
+
+    .categorias{
+        gap:35px;
+    }
+
+    .card{
+        width:280px !important;
+        min-height:240px !important;
+    }
+
+    .formulario-card{
+        max-width:900px !important;
+    }
+
+    .hero-texto{
+        max-width:850px;
+    }
 
 }
