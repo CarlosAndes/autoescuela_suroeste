@@ -330,6 +330,9 @@ def separar_cupo():
         fecha=request.form["fecha_nacimiento"]
         leer=request.form["sabe_leer"]
         pago=request.form["tipo_pago"]
+        comprobante = request.files.get(
+    "comprobante"
+)
 
         c1=request.form.get(
             "tiene_c1",
@@ -710,10 +713,41 @@ def admin():
 
     conexion.close()
 
+    try:
+
+        respuesta = requests.get(
+            GOOGLE_SCRIPT_URL
+        )
+
+        dashboard = respuesta.json()
+
+    except:
+
+        dashboard = {
+
+            "total": 0,
+            "a2": 0,
+            "b1": 0,
+            "c1": 0,
+            "c2": 0,
+            "promo": 0
+
+        }
+
     return render_template(
-    "admin.html",
-    datos=datos
-)
+
+        "admin.html",
+
+        datos=datos,
+
+        total=dashboard["total"],
+        a2=dashboard["a2"],
+        b1=dashboard["b1"],
+        c1=dashboard["c1"],
+        c2=dashboard["c2"],
+        promo=dashboard["promo"]
+
+    )
 
 
 @app.route("/logout")
@@ -730,4 +764,3 @@ if __name__=="__main__":
     app.run(
         debug=True
     )
-
