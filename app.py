@@ -1,10 +1,11 @@
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, session, redirect, url_for
 import sqlite3
 import requests
 
 GOOGLE_SCRIPT_URL="https://script.google.com/macros/s/AKfycbyNmE0s-1A4kTGyC428Y-540CtUY07bbH6Y2RzK5B7Zox8YPRqwgOVBWHpsKfovTsPg/exec"
 
 app = Flask(__name__)
+app.secret_key = "autoescuela_suroeste_2026"
 # BASE DE DATOS
 
 def crear_bd():
@@ -80,6 +81,14 @@ def obtener_precio(curso):
         return resultado[0]
 
     return "0"
+
+
+def formato_precio(valor):
+
+    return "{:,}".format(
+        int(valor)
+    ).replace(",", ".")
+
 # INICIO
 
 @app.route("/")
@@ -94,23 +103,29 @@ def moto():
 
     curso = {
 
-        "titulo":"🏍 Categoría A2",
-        "imagen":"moto.jpg",
-        "etiqueta":"Más solicitada",
-        "descripcion":"Curso completo para motocicleta",
-      "precio":"$"+obtener_precio("A2"),
-        "licencia":"$"+obtener_precio("LICENCIA"),
+    "titulo":"🏍 Categoría A2",
+    "imagen":"moto.jpg",
+    "etiqueta":"Más solicitada",
+    "descripcion":"Curso completo para motocicleta",
 
-        "incluye":[
+    "precio":"$"+formato_precio(
+        obtener_precio("A2")
+    ),
 
-            "Exámenes médicos (Andes)",
-            "28 clases teoría grupal",
-            "15 clases prácticas",
-            "Certificado conducción"
+    "licencia":"$"+formato_precio(
+        obtener_precio("LICENCIA")
+    ),
 
-        ]
+    "incluye":[
 
-    }
+        "Exámenes médicos (Andes)",
+        "28 clases teoría grupal",
+        "15 clases prácticas",
+        "Certificado conducción"
+
+    ]
+
+}
 
     return render_template(
         "curso.html",
@@ -129,8 +144,13 @@ def carro():
         "imagen":"carro.jpg",
         "etiqueta":"Más solicitada",
         "descripcion":"Curso completo carro particular",
-       "precio":"$"+obtener_precio("B1"),
-       "licencia":"$"+obtener_precio("LICENCIA"),
+       "precio":"$"+formato_precio(
+    obtener_precio("B1")
+),
+
+"licencia":"$"+formato_precio(
+    obtener_precio("LICENCIA")
+),
 
         "incluye":[
 
@@ -161,7 +181,13 @@ def publico():
         "etiqueta":"Servicio público",
         "descripcion":"Curso servicio público",
         "precio":"$"+obtener_precio("C1"),
-       "licencia":"$"+obtener_precio("LICENCIA"),
+        "precio":"$"+formato_precio(
+    obtener_precio("C1")
+),
+
+"licencia":"$"+formato_precio(
+    obtener_precio("LICENCIA")
+),
         "incluye":[
 
             "Exámenes médicos",
@@ -190,8 +216,13 @@ def camion():
         "imagen":"camion.jpg",
         "etiqueta":"Vehículos pesados",
         "descripcion":"Curso camión",
-       "precio":"$"+obtener_precio("C2"),
-        "licencia":"$110.000",
+       "precio":"$"+formato_precio(
+    obtener_precio("C2")
+),
+
+"licencia":"$"+formato_precio(
+    obtener_precio("LICENCIA")
+),
 
         "incluye":[
 
@@ -221,8 +252,13 @@ def promo1():
         "imagen":"promo_a2_b1.jpg",
         "etiqueta":"PROMOCIÓN",
         "descripcion":"Moto + Carro Particular",
-        "precio":"$"+obtener_precio("A2+B1"),
-        "licencia":"$"+obtener_precio("LICENCIA_PROMO"),
+        "precio":"$"+formato_precio(
+    obtener_precio("A2+B1")
+),
+
+"licencia":"$"+formato_precio(
+    obtener_precio("LICENCIA_PROMO")
+),
 
         "incluye":[
 
@@ -252,8 +288,13 @@ def promo2():
         "imagen":"promo_a2_c1.jpg",
         "etiqueta":"PROMOCIÓN",
         "descripcion":"Moto + Servicio público",
-        "precio":"$"+obtener_precio("A2+C1"),
-        "licencia":"$"+obtener_precio("LICENCIA_PROMO"),
+        "precio":"$"+formato_precio(
+    obtener_precio("A2+C1")
+),
+
+"licencia":"$"+formato_precio(
+    obtener_precio("LICENCIA_PROMO")
+),
 
         "incluye":[
 
@@ -571,10 +612,108 @@ Gracias por confiar en Autoescuela SUROESTE ❤️
     )
 
 # PANEL ADMIN
+@app.route(
+    "/admin_login",
+    methods=["GET","POST"]
+)
+def admin_login():
 
-@app.route("/admin")
+    if request.method == "POST":
+
+        usuario = request.form["usuario"]
+        clave = request.form["clave"]
+
+        if (
+            usuario == "admin"
+            and
+            clave == "Suroeste2026"
+        ):
+
+            session["admin"] = True
+
+            return redirect(
+                url_for("admin")
+            )
+
+    return render_template(
+        "admin_login.html"
+    )
+
+# PANEL ADMIN
+
+@app.route(
+    "/admin",
+    methods=["GET","POST"]
+)
 def admin():
-    return "Panel admin"
+
+    if "admin" not in session:
+
+        return redirect(
+            url_for("admin_login")
+        )
+
+    conexion = sqlite3.connect(
+        "ventas.db"
+    )
+
+    cursor = conexion.cursor()
+
+    if request.method == "POST":
+
+        cursor.execute(
+            "SELECT curso FROM configuracion"
+        )
+
+        cursos = cursor.fetchall()
+
+        for curso in cursos:
+
+            nombre = curso[0]
+
+            nuevo_precio = request.form.get(
+                nombre
+            )
+
+            nuevo_precio = nuevo_precio.replace(
+                ".",
+                ""
+            )
+
+            cursor.execute(
+
+                """
+                UPDATE configuracion
+                SET precio=?
+                WHERE curso=?
+                """,
+
+                (
+                    nuevo_precio,
+                    nombre
+                )
+
+            )
+
+        conexion.commit()
+
+    cursor.execute(
+
+        """
+        SELECT curso, precio
+        FROM configuracion
+        """
+
+    )
+
+    datos = cursor.fetchall()
+
+    conexion.close()
+
+    return render_template(
+        "admin.html",
+        datos=datos
+    )
 
 
 if __name__=="__main__":
