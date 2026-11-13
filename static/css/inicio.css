@@ -111,7 +111,7 @@ img{max-width:100%;display:block}
 @media(max-width:550px){
  .container{width:min(100% - 30px,1160px)}.brand img{width:155px}
  .info-strip-inner{font-size:11px;gap:8px}
- .hero{min-height:410px;background-image:linear-gradient(90deg,rgba(4,35,22,.76),rgba(4,35,22,.38)),url('../img/carro.jpg');background-position:center,60% center}
+ .hero{min-height:410px;background-image:linear-gradient(90deg,rgba(4,35,22,.76),rgba(4,35,22,.38)),url('../img/carro_mejorado.png');background-position:center,60% center}
  .hero-inner{padding-block:60px}.hero h1{font-size:34px}.hero p{font-size:14px}
  .hero-actions .btn{flex:1;min-width:135px;font-size:12px;padding:12px 10px}
  .quick-grid{gap:0;padding-block:12px}.quick-item{padding:15px 8px!important;border:0;gap:10px}
