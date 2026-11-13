@@ -1,504 +1,131 @@
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>Autoescuela SUROESTE</title>
-
-<link rel="stylesheet"
-href="{{ url_for('static', filename='css/estilos.css') }}">
-<link rel="stylesheet"
-href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Conoce los cursos de conducción A2, B1, C1 y C2 de Autoescuela SUROESTE en Andes, Antioquia.">
+  <title>Autoescuela SUROESTE | Cursos de conducción</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/inicio.css') }}">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 </head>
-
 <body>
+  <header class="site-header">
+    <div class="nav-wrap container">
+      <a class="brand" href="{{ url_for('inicio') }}" aria-label="Autoescuela SUROESTE, inicio">
+        <img src="{{ url_for('static', filename='img/logo.jpg') }}" alt="Autoescuela SUROESTE">
+      </a>
+      <button class="menu-toggle" type="button" aria-label="Abrir menú" aria-controls="main-nav" aria-expanded="false"><i class="fa-solid fa-bars"></i></button>
+      <nav class="main-nav" id="main-nav" aria-label="Navegación principal">
+        <a class="active" href="{{ url_for('inicio') }}"><i class="fa-solid fa-house"></i> Inicio</a>
+        <a href="#categorias"><i class="fa-solid fa-book-open"></i> Escoger curso</a>
+        <a href="#promociones"><i class="fa-solid fa-tag"></i> Promociones</a>
+        <a href="#beneficios"><i class="fa-solid fa-circle-info"></i> Nosotros</a>
+        <a href="#contacto"><i class="fa-solid fa-phone"></i> Contacto</a>
+        <a class="admin-link" href="{{ url_for('admin_login') }}"><i class="fa-solid fa-user-shield"></i> Panel admin</a>
+      </nav>
+    </div>
+  </header>
 
-<!-- HEADER -->
+  <div class="info-strip">
+    <div class="container info-strip-inner">
+      <span><i class="fa-solid fa-location-dot"></i> Calle 50 #49-12, Local 103 · Andes, Antioquia</span>
+      <span><i class="fa-regular fa-clock"></i> Lun, Mar, Jue, Vie, Sáb y Dom · 8 a. m. – 5 p. m.</span>
+      <span class="closed"><i class="fa-regular fa-calendar-xmark"></i> Miércoles cerrado</span>
+    </div>
+  </div>
 
-<div class="header">
-
-<div class="logo">
-
-<img
-src="{{ url_for('static', filename='img/logo.jpg') }}"
-alt="Autoescuela SUROESTE">
-
-</div>
-
-<div class="menu">
-
-    <a href="/">
-        <i class="fas fa-home"></i> Inicio
-    </a>
-
-    <a href="#categorias">
-        <i class="fas fa-book-open"></i> Escoger curso
-    </a>
-
-    <a href="tel:3113416655">
-        <i class="fas fa-phone"></i> 3113416655
-    </a>
-
-</div>
-
-</div>
-
-
-<!-- INFORMACIÓN -->
-
-<div class="info-bar">
-
-📍 Calle 50 #49-12 Local 103 – Andes (Ant.) |
-
-🕒 Lun-Mar-Jue-Vie-Sáb-Dom:
-8 a.m.–5 p.m. |
-
-❌ Miércoles cerrado
-
-</div>
-
-
-
-<!-- HERO PRO -->
-
-<div class="hero">
-
-<div class="hero-texto">
-
-<span class="badge">
-
-🚗 Autoescuela líder en el Suroeste Antioqueño
-
-</span>
-
-<h1>
-
-Obtén tu licencia de conducción sin complicaciones
-
-</h1>
-
-<p>
-
-Moto, carro, servicio público y camión.
-Empieza hoy tu proceso con Autoescuela SUROESTE.
-
-</p>
-
-<div class="hero-botones">
-
-<a href="#categorias">
-
-<button>
-
-🚀 Escoger curso
-
-</button>
-
-</a>
-
-<a href="https://wa.me/573113416655">
-
-<button class="btn2">
-
-💬 WhatsApp
-
-</button>
-
-</a>
-
-</div>
-
-</div>
-
-</div>
-
-
-
-
-
-<!-- ESTADÍSTICAS -->
-
-<div class="stats">
-
-    <a href="https://www.google.com/search?q=autoescuela+suroeste#lrd=0x8e4681b8c30f6f6f:0x6f3f0d8d1b3d6a1f,1"
-       target="_blank"
-       style="text-decoration:none;">
-
-        <div class="stat-card">
-
-            <div class="stat-icon estrella">★</div>
-
-            <h3>4.9</h3>
-
-            <p>Calificación Google</p>
-
-            <small>Ver opiniones →</small>
-
+  <main>
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="container hero-inner">
+        <div class="hero-content">
+          <span class="eyebrow">Tu camino empieza aquí</span>
+          <h1 id="hero-title">Obtén tu licencia de conducción <span>sin complicaciones</span></h1>
+          <p>Capacítate para conducir moto, carro, servicio público o camión con Autoescuela SUROESTE en Andes, Antioquia.</p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#categorias"><i class="fa-solid fa-book-open"></i> Escoger curso</a>
+            <a class="btn btn-outline" href="https://wa.me/573113416655" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-whatsapp"></i> WhatsApp</a>
+          </div>
         </div>
+      </div>
+    </section>
 
-    </a>
+    <section class="quick-info" aria-label="Información de la autoescuela">
+      <div class="container quick-grid">
+        <a class="quick-item" href="https://www.google.com/search?q=autoescuela+suroeste" target="_blank" rel="noopener noreferrer">
+          <i class="fa-solid fa-star"></i><span><strong>Opiniones</strong><small>Consulta nuestra calificación en Google</small></span>
+        </a>
+        <a class="quick-item" href="https://maps.google.com/?q=Calle+50+%2349-12+Local+103+Andes+Antioquia" target="_blank" rel="noopener noreferrer">
+          <i class="fa-solid fa-location-dot"></i><span><strong>Andes, Antioquia</strong><small>Ver ubicación de la sede</small></span>
+        </a>
+        <div class="quick-item"><i class="fa-regular fa-clock"></i><span><strong>Horario de atención</strong><small>8 a. m. – 5 p. m.</small></span></div>
+        <a class="quick-item" href="tel:+573113416655"><i class="fa-solid fa-phone"></i><span><strong>Contacto</strong><small>311 341 6655</small></span></a>
+      </div>
+    </section>
 
-    <a href="https://maps.google.com/?q=Calle+50+%2349-12+Local+103+Andes+Antioquia"
-       target="_blank"
-       style="text-decoration:none;">
-
-        <div class="stat-card">
-
-            <div class="stat-icon verde">
-                <i class="fas fa-map-marker-alt"></i>
-            </div>
-
-            <h3>Andes</h3>
-
-            <p>Sede principal</p>
-
-            <small>Ver ubicación →</small>
-
+    <div class="container main-sections">
+      <section class="promos" id="promociones" aria-labelledby="promos-title">
+        <div class="section-heading"><span class="section-kicker">Oportunidades para ti</span><h2 id="promos-title">Promociones destacadas</h2><p>Combina categorías y avanza en tu formación.</p></div>
+        <div class="promo-grid">
+          <article class="promo-card">
+            <div class="promo-image"><img src="{{ url_for('static', filename='img/promo_a2_b1.jpg') }}" alt="Promoción de moto A2 y carro B1" loading="lazy"></div>
+            <div class="promo-content"><span class="promo-tag">Promoción</span><h3>A2 + B1</h3><p>Moto + carro particular</p><strong class="promo-price">${{ precio_a2_b1|default('2.290.000') }}</strong><a class="btn btn-card" href="{{ url_for('promo1') }}">Ver promoción <i class="fa-solid fa-arrow-right"></i></a></div>
+          </article>
+          <article class="promo-card">
+            <div class="promo-image"><img src="{{ url_for('static', filename='img/promo_a2_c1.jpg') }}" alt="Promoción de moto A2 y servicio público C1" loading="lazy"></div>
+            <div class="promo-content"><span class="promo-tag">Promoción</span><h3>A2 + C1</h3><p>Moto + servicio público</p><strong class="promo-price">${{ precio_a2_c1|default('2.490.000') }}</strong><a class="btn btn-card" href="{{ url_for('promo2') }}">Ver promoción <i class="fa-solid fa-arrow-right"></i></a></div>
+          </article>
         </div>
+      </section>
 
-    </a>
-
-    <div class="stat-card">
-
-        <div class="stat-icon verde">
-            <i class="far fa-clock"></i>
+      <section class="courses" id="categorias" aria-labelledby="courses-title">
+        <div class="section-heading"><span class="section-kicker">Nuestros cursos</span><h2 id="courses-title">Escoge tu categoría</h2><p>Encuentra la formación adecuada para ti.</p></div>
+        <div class="course-grid">
+          <a class="course-card" href="{{ url_for('moto') }}"><span class="course-icon"><img src="{{ url_for('static', filename='img/moto.png') }}" alt="" loading="lazy"></span><span class="course-copy"><strong>Moto A2</strong><small>Licencia para motocicletas</small></span><i class="fa-solid fa-chevron-right"></i></a>
+          <a class="course-card" href="{{ url_for('carro') }}"><span class="course-icon"><img src="{{ url_for('static', filename='img/carro.png') }}" alt="" loading="lazy"></span><span class="course-copy"><strong>Carro B1</strong><small>Vehículos particulares</small></span><i class="fa-solid fa-chevron-right"></i></a>
+          <a class="course-card" href="{{ url_for('publico') }}"><span class="course-icon"><img src="{{ url_for('static', filename='img/taxi.png') }}" alt="" loading="lazy"></span><span class="course-copy"><strong>Servicio público C1</strong><small>Transporte público</small></span><i class="fa-solid fa-chevron-right"></i></a>
+          <a class="course-card" href="{{ url_for('camion') }}"><span class="course-icon"><img src="{{ url_for('static', filename='img/camion.png') }}" alt="" loading="lazy"></span><span class="course-copy"><strong>Camión C2</strong><small>Vehículos pesados</small></span><i class="fa-solid fa-chevron-right"></i></a>
         </div>
-
-        <h3>Horario</h3>
-
-        <small>8 a.m. – 5 p.m.</small>
-
+      </section>
     </div>
 
-    <div class="stat-card">
-
-        <div class="stat-icon verde">
-            <i class="fas fa-phone-alt"></i>
+    <section class="benefits" id="beneficios" aria-labelledby="benefits-title">
+      <div class="container"><h2 id="benefits-title">¿Por qué elegir Autoescuela SUROESTE?</h2>
+        <div class="benefit-grid">
+          <div class="benefit"><i class="fa-solid fa-shield-halved"></i><div><h3>Formación de calidad</h3><p>Enseñanza integral para tu preparación como conductor.</p></div></div>
+          <div class="benefit"><i class="fa-solid fa-graduation-cap"></i><div><h3>Cursos para todos</h3><p>Categorías A2, B1, C1 y C2 según tus necesidades.</p></div></div>
+          <div class="benefit"><i class="fa-regular fa-clock"></i><div><h3>Horarios flexibles</h3><p>Consulta la disponibilidad de clases teóricas y prácticas.</p></div></div>
+          <div class="benefit"><i class="fa-solid fa-circle-check"></i><div><h3>Acompañamiento</h3><p>Te orientamos durante tu proceso de formación.</p></div></div>
         </div>
+      </div>
+    </section>
+  </main>
 
-       <h3>Contacto</h3>
-
-        <small>3113416655</small>
-
+  <footer class="site-footer" id="contacto">
+    <div class="container footer-grid">
+      <div class="footer-brand"><img src="{{ url_for('static', filename='img/logo.jpg') }}" alt="Autoescuela SUROESTE"><p>Centro de enseñanza automovilística en Andes, Antioquia.</p></div>
+      <div><h3>Visítanos</h3><p><i class="fa-solid fa-location-dot"></i> Calle 50 #49-12, Local 103<br>Andes, Antioquia</p><p><a href="tel:+573113416655"><i class="fa-solid fa-phone"></i> 311 341 6655</a></p></div>
+      <div><h3>Síguenos</h3><div class="social-links"><a href="https://www.facebook.com/autoescuelasuroeste/?locale=es_LA" target="_blank" rel="noopener noreferrer" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a><a href="https://www.instagram.com/autoescuela_suroeste/" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a><a href="https://wa.me/573113416655" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a></div></div>
     </div>
-
-</div>
-
-</a>
-
-
-
-
-</div>
-
-
-
-<div class="contenedor">
-
-<!-- PROMOCIONES -->
-
-<div class="promo">
-
-<h2>
-
-🔥 Promociones destacadas
-
-</h2>
-
-<div class="promociones">
-
-
-<div class="promo-card">
-
-<h3>
-
-⭐ A2 + B1
-
-</h3>
-
-<p>
-
-Moto + Carro Particular
-
-</p>
-
-<h2>
-
-$2.290.000
-
-</h2>
-
-<a href="/promo_a2_b1">
-
-<button>
-
-Ver promoción
-
-</button>
-
-</a>
-
-</div>
-
-
-
-<div class="promo-card">
-
-<h3>
-
-⭐ A2 + C1
-
-</h3>
-
-<p>
-
-Moto + Servicio Público
-
-</p>
-
-<h2>
-
-$2.490.000
-
-</h2>
-
-<a href="/promo_a2_c1">
-
-<button>
-
-Ver promoción
-
-</button>
-
-</a>
-
-</div>
-
-</div>
-
-</div>
-
-
-
-<!-- CATEGORÍAS -->
-
-<h1 id="categorias" class="titulo-categorias">
-
- Escoge tu categoría
-
-</h1>
-
-<div class="categorias">
-
-
-<a href="/moto"
-style="text-decoration:none;color:black;">
-
-<div class="card">
-
-<div class="icono">
-    <img src="{{ url_for('static', filename='img/moto.png') }}" alt="Moto A2">
-</div>
-
-<h2>
-
-Moto A2
-
-</h2>
-
-<p>
-
-Licencia para motocicletas
-
-</p>
-
-</div>
-
-</a>
-
-
-
-<a href="/carro"
-style="text-decoration:none;color:black;">
-
-<div class="card">
-
-<div class="icono">
-    <img src="{{ url_for('static', filename='img/carro.png') }}" alt="Carro B1">
-</div>
-
-<h2>
-
-Carro B1
-
-</h2>
-
-<p>
-
-Carro particular
-
-</p>
-
-</div>
-
-</a>
-
-
-
-<a href="/publico"
-style="text-decoration:none;color:black;">
-
-<div class="card">
-
-<div class="icono">
-    <img src="{{ url_for('static', filename='img/taxi.png') }}" alt="Servicio Público C1">
-</div>
-
-<h2>
-
-Servicio Público C1
-
-</h2>
-
-<p>
-
-Transporte público
-
-</p>
-
-</div>
-
-</a>
-
-
-
-<a href="/camion"
-style="text-decoration:none;color:black;">
-
-<div class="card">
-
-<div class="icono">
-    <img src="{{ url_for('static', filename='img/camion.png') }}" alt="Camión C2">
-</div>
-
-<h2>
-
-Camión C2
-
-</h2>
-
-<p>
-
-Vehículos pesados
-
-</p>
-
-</div>
-
-</a>
-
-
-</div>
-
-</div>
-<link
-rel="stylesheet"
-href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
-
-
-<div class="redes-flotantes">
-
-<a
-class="facebook"
-href="https://www.facebook.com/autoescuelasuroeste/?locale=es_LA"
-target="_blank">
-
-<img src="{{ url_for('static', filename='img/facebook.png') }}" alt="Facebook">
-
-</a>
-
-
-<a
-class="instagram"
-href="https://www.instagram.com/autoescuela_suroeste/"
-target="_blank">
-<img src="{{ url_for('static', filename='img/instagram.png') }}" alt="Instagram">
-
-</a>
-
-
-<a
-class="whats"
-href="https://wa.me/573113416655"
-target="_blank">
-<img src="{{ url_for('static', filename='img/whatsapp.png') }}" alt="WhatsApp">
-
-</a>
-
-</div>
-<section class="beneficios">
-
-    <div class="beneficio">
-        <div class="beneficio-icono">🛡️</div>
-        <h3>Formación de calidad</h3>
-        <p>Instructores certificados y enseñanza integral.</p>
-    </div>
-
-    <div class="beneficio">
-        <div class="beneficio-icono">🚗</div>
-        <h3>Cursos para todos</h3>
-        <p>Categorías A2, B1, C1 y C2 según tus necesidades.</p>
-    </div>
-
-    <div class="beneficio">
-        <div class="beneficio-icono">🕒</div>
-        <h3>Horarios flexibles</h3>
-        <p>Clases teóricas y prácticas que se ajustan a ti.</p>
-    </div>
-
-    <div class="beneficio">
-        <div class="beneficio-icono">✅</div>
-        <h3>Trámites rápidos</h3>
-        <p>Te acompañamos durante todo el proceso.</p>
-    </div>
-
-</section>
-
-<footer class="footer">
-
-
-
-<a
-href="https://www.instagram.com/autoescuela_suroeste/"
-target="_blank"
-title="Instagram">
-
-
-
-</div>
-
-<!-- FOOTER -->
-<footer class="footer">
-
-    <h2>🚗 Autoescuela SUROESTE</h2>
-
-    <div class="footer-info">
-
-        <span>📍 Calle 50 #49-12 Local 103 — Andes Antioquia</span>
-
-        <span>📞 3113416655</span>
-
-    </div>
-
-    <p>✉️ Centro de enseñanza automovilístico</p>
-
-    <p class="texto-redes">
-        Síguenos en nuestras redes sociales
-    </p>
-
-</footer>
-
+    <div class="container footer-bottom">© 2026 Autoescuela SUROESTE · Todos los derechos reservados.</div>
+  </footer>
+  <script>
+    const toggle = document.querySelector('.menu-toggle');
+    const nav = document.querySelector('.main-nav');
+    toggle.addEventListener('click', () => {
+      const opened = nav.classList.toggle('is-open');
+      toggle.setAttribute('aria-expanded', String(opened));
+      toggle.setAttribute('aria-label', opened ? 'Cerrar menú' : 'Abrir menú');
+      toggle.querySelector('i').className = opened ? 'fa-solid fa-xmark' : 'fa-solid fa-bars';
+    });
+    nav.querySelectorAll('a').forEach(link => link.addEventListener('click', () => {
+      nav.classList.remove('is-open');
+      toggle.setAttribute('aria-expanded', 'false');
+      toggle.setAttribute('aria-label', 'Abrir menú');
+      toggle.querySelector('i').className = 'fa-solid fa-bars';
+    }));
+  </script>
 </body>
 </html>
