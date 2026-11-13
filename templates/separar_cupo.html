@@ -1,458 +1,127 @@
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
-
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>Separar Cupo</title>
-
-<link rel="stylesheet"
-href="{{ url_for('static', filename='css/estilos.css') }}">
-
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Reserva tu cupo | Autoescuela SUROESTE</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/reserva_cupo_seguro.css') }}">
 </head>
-
-<body>
-
-<div class="contenedor">
-
-<div class="formulario-card">
-
-<h1 class="titulo-form">
-🚗 Reserva tu cupo
-</h1>
-
-<p class="subtitulo-form">
-Completa la información para iniciar tu proceso
-</p>
-
-
-<div class="edad-box">
-
-🎓 Curso seleccionado:
-
-<strong>
-{{curso}}
-</strong>
-
-<br><br>
-
-</div>
-
-
-<form method="POST" enctype="multipart/form-data">
-
-
-<div class="grupo">
-
-<label>👤 Nombre completo</label>
-
-<input
-name="nombre"
-type="text"
-placeholder="Escribe tu nombre completo"
-required>
-
-</div>
-
-
-
-<div class="grupo">
-
-<label>🪪 Tipo documento</label>
-
-<select
-name="tipo_documento"
-required>
-
-<option value="">
-Seleccione una opción
-</option>
-
-<option>Cédula ciudadanía</option>
-<option>Tarjeta identidad</option>
-<option>Cédula extranjería</option>
-<option>Pasaporte</option>
-<option>PPT</option>
-
-</select>
-
-</div>
-
-
-
-<div class="grupo">
-
-<label>🔢 Documento</label>
-
-<input
-name="documento"
-type="number"
-required>
-
-</div>
-
-
-
-<div class="grupo">
-
-<label>📞 Celular</label>
-
-<input
-name="celular"
-type="number"
-required>
-
-</div>
-
-
-
-<div class="grupo">
-
-<label>📧 Correo</label>
-
-<input
-name="correo"
-type="email"
-required>
-
-</div>
-
-
-
-<div class="grupo">
-
-<label>🎂 Fecha nacimiento</label>
-
-<input
-name="fecha_nacimiento"
-type="date"
-id="fecha_nacimiento"
-required>
-
-<small>
-Debe tener mínimo 16 años y 1 mes cumplido.
-</small>
-
-</div>
-
-
-{% if curso and "C2" in curso %}
-
-<div class="grupo">
-
-<label>
-🚛 ¿Actualmente tiene licencia C1?
-</label>
-
-<select name="tiene_c1">
-
-<option>
-Seleccione
-</option>
-
-<option>Sí</option>
-
-<option>No</option>
-
-</select>
-
-<small>
-La categoría C2 requiere contar previamente con C1
-</small>
-
-</div>
-
-{% endif %}
-
-
-
-<div class="grupo">
-
-<label>
-📚 ¿Sabe leer y escribir?
-</label>
-
-<select
-name="sabe_leer"
-id="sabe_leer"
-required>
-
-
-<option>
-Seleccione
-</option>
-
-<option>Sí</option>
-<option>No</option>
-
-</select>
-
-</div>
-
-
-
-<button
-type="button"
-onclick="mostrarPago()">
-
-🚀 Continuar
-
-</button>
-
-
-
-<div
-id="pagoBox"
-style="display:none;margin-top:30px;">
-
-
-<div class="edad-box">
-
-💰 ¿Cómo deseas continuar?
-
-</div>
-
-
-<div class="grupo">
-
-<label>
-Tipo de pago
-</label>
-
-<select name="tipo_pago">
-
-<option>
-Separar cupo mínimo ($200.000)
-</option>
-
-<option>
-Pagar curso completo (${{precio}})
-</option>
-
-</select>
-
-</div>
-
-
-
-<div class="edad-box">
-
-<h3>
-🏦 Información de pago
-</h3>
-
-<p>
-Realiza el pago y luego adjunta el comprobante
-</p>
-
-
-<div class="pagos-grid">
-
-<div class="pago-card">
-
-🏦
-
-<h4>
-Bancolombia
-</h4>
-
-<small>
-
-Cuenta de ahorros
-
-<br><br>
-
-43800000522
-
-</small>
-
-</div>
-
-</div>
-
-
-<br>
-
-<strong>Titular:</strong>
-Autoescuela SUROESTE
-
-<br>
-
-<strong>NIT:</strong>
-901347011-1
-
-</div>
-
-
-
-<div class="grupo">
-
-<label>
-📎 Adjuntar comprobante
-</label>
-
-<input
-name="comprobante"
-type="file"
-accept="image/*,.pdf">
-
-</div>
-
-
-
-<div class="edad-box">
-
-📌 Si pagaste desde corresponsal o cualquier entidad:
-
-<br><br>
-
-Puedes subir el comprobante aquí o enviarlo directamente por WhatsApp.
-
-<br><br>
-
-<a
-href="https://wa.me/573113416655"
-target="_blank"
-class="btn-whatsapp">
-
-💬 Enviar comprobante por WhatsApp
-
-</a>
-
-</div>
-
-
-
-<button type="submit">
-
-✅ Finalizar proceso
-
-</button>
-
-
-</div>
-
-</form>
-
-</div>
-
-</div>
-
-<script>
-
-function mostrarPago(){
-
-    const formulario =
-    document.querySelector("form");
-
-    if(!formulario.checkValidity()){
-
-        formulario.reportValidity();
-
-        return;
-
-    }
-
-    let sabeLeer =
-    document.getElementById(
-        "sabe_leer"
-    ).value;
-
-    if(sabeLeer === "No"){
-
-        alert(
-        "Lo sentimos. Para acceder a los programas de formación en conducción es requisito saber leer y escribir, ya que el estudiante debe comprender señales de tránsito, material pedagógico y evaluaciones teóricas obligatorias."
-        );
-
-        return;
-
-    }
-
-    document.getElementById(
-        "pagoBox"
-    ).style.display = "block";
-
-}
-
-window.onload = function(){
-
-    let fecha = new Date();
-
-    fecha.setFullYear(
-        fecha.getFullYear() - 16
-    );
-
-    fecha.setMonth(
-        fecha.getMonth() - 1
-    );
-
-    let anio = fecha.getFullYear();
-
-    let mes = String(
-        fecha.getMonth() + 1
-    ).padStart(2,'0');
-
-    let dia = String(
-        fecha.getDate()
-    ).padStart(2,'0');
-
-    document.getElementById(
-        "fecha_nacimiento"
-    ).max =
-    `${anio}-${mes}-${dia}`;
-
-}
-
-/* VALIDAR EDAD MÍNIMA */
-
-window.onload = function(){
-
-    let fecha = new Date();
-
-    fecha.setFullYear(
-        fecha.getFullYear() - 16
-    );
-
-    fecha.setMonth(
-        fecha.getMonth() - 1
-    );
-
-    let anio = fecha.getFullYear();
-
-    let mes = String(
-        fecha.getMonth() + 1
-    ).padStart(2,'0');
-
-    let dia = String(
-        fecha.getDate()
-    ).padStart(2,'0');
-
-    document.getElementById(
-        "fecha_nacimiento"
-    ).max =
-    `${anio}-${mes}-${dia}`;
-
-}
-
-/* MENSAJE SI NO SABE LEER */
-
-document.getElementById(
-    "sabe_leer"
-).addEventListener(
-    "change",
-    function(){
-
-        if(this.value === "No"){
-
-            alert(
-            "Lo sentimos. Para iniciar el proceso de formación en conducción es necesario saber leer y escribir, ya que durante el curso se deben comprender señales de tránsito, normas viales y contenidos teóricos obligatorios."
-            );
-
+<body class="reserva-page">
+  <header class="reserva-header">
+    <div class="reserva-header-inner">
+      <a href="{{ url_for('inicio') }}" class="reserva-brand" aria-label="Volver al inicio">🚗 <span><strong>AUTOESCUELA</strong> SUROESTE</span></a>
+      <a class="reserva-back" href="{{ url_for('inicio') }}">← Volver al inicio</a>
+    </div>
+  </header>
+
+  <main class="reserva-layout">
+    <section class="reserva-main" aria-labelledby="titulo-reserva">
+      <div class="reserva-heading">
+        <span class="reserva-kicker">INSCRIPCIÓN EN LÍNEA</span>
+        <h1 id="titulo-reserva">¡Tu licencia comienza aquí!</h1>
+        <p>Reserva tu cupo en unos pasos. Completa tus datos y revisa la información de pago.</p>
+      </div>
+      <div class="reserva-steps" aria-label="Progreso del formulario">
+        <div class="reserva-step active" id="indicador-1"><span>1</span><strong>Datos personales</strong></div>
+        <div class="reserva-step-line"></div>
+        <div class="reserva-step" id="indicador-2"><span>2</span><strong>Pago y confirmación</strong></div>
+      </div>
+
+      <!-- Se conservan method, enctype y todos los name del formulario original. -->
+      <form method="POST" enctype="multipart/form-data" id="formReserva">
+        <div class="reserva-panel" id="paso1">
+          <div class="reserva-panel-heading"><div class="reserva-icon">👤</div><div><h2>Información del aspirante</h2><p>Ingresa tus datos tal como aparecen en tu documento.</p></div></div>
+          <div class="reserva-fields">
+            <div class="reserva-field full"><label for="nombre">Nombre completo <span>*</span></label><input id="nombre" name="nombre" type="text" placeholder="Nombres y apellidos" autocomplete="name" required></div>
+            <div class="reserva-field"><label for="tipo_documento">Tipo de documento <span>*</span></label><select id="tipo_documento" name="tipo_documento" required><option value="" selected disabled>Selecciona tu documento</option><option>Cédula ciudadanía</option><option>Tarjeta identidad</option><option>Cédula extranjería</option><option>Pasaporte</option><option>PPT</option></select></div>
+            <div class="reserva-field"><label for="documento">Número de documento <span>*</span></label><input id="documento" name="documento" type="number" placeholder="Número de identificación" required></div>
+            <div class="reserva-field"><label for="celular">Celular <span>*</span></label><input id="celular" name="celular" type="number" placeholder="Número de contacto" required></div>
+            <div class="reserva-field"><label for="correo">Correo electrónico <span>*</span></label><input id="correo" name="correo" type="email" placeholder="ejemplo@correo.com" autocomplete="email" required></div>
+            <div class="reserva-field"><label for="fecha_nacimiento">Fecha de nacimiento <span>*</span></label><input id="fecha_nacimiento" name="fecha_nacimiento" type="date" required><small>Debes tener al menos 16 años y 1 mes.</small></div>
+            <div class="reserva-field"><label for="sabe_leer">¿Sabes leer y escribir? <span>*</span></label><select id="sabe_leer" name="sabe_leer" required><option value="" selected disabled>Selecciona una opción</option><option>Sí</option><option>No</option></select></div>
+            {% if curso and "C2" in curso %}
+            <div class="reserva-field full"><label for="tiene_c1">🚛 ¿Actualmente tienes licencia C1?</label><select id="tiene_c1" name="tiene_c1"><option>Seleccione</option><option>Sí</option><option>No</option></select><small>Para la categoría C2 se requiere contar previamente con C1.</small></div>
+            {% endif %}
+          </div>
+          <div class="reserva-panel-footer"><span>🔒 Tus datos serán utilizados para gestionar la inscripción.</span><button type="button" class="reserva-button" id="continuarBtn">Continuar al pago →</button></div>
+        </div>
+
+        <div class="reserva-panel" id="paso2" hidden>
+          <div class="reserva-panel-heading"><div class="reserva-icon">💳</div><div><h2>Pago y comprobante</h2><p>Selecciona cómo deseas continuar con tu inscripción.</p></div></div>
+          <div class="reserva-field"><label for="tipo_pago">Tipo de pago</label><select id="tipo_pago" name="tipo_pago"><option>Separar cupo mínimo ($200.000)</option><option>Pagar curso completo (${{precio}})</option></select></div>
+          <div class="reserva-bank"><div class="reserva-bank-title">🏦 <strong>Datos para realizar el pago</strong></div><div class="reserva-bank-grid"><div><small>Banco</small><strong>Bancolombia</strong></div><div><small>Tipo de cuenta</small><strong>Ahorros</strong></div><div><small>Número de cuenta</small><strong>43800000522</strong></div><div><small>Titular</small><strong>Autoescuela SUROESTE</strong></div><div><small>NIT</small><strong>901347011-1</strong></div></div><button type="button" class="reserva-copy" id="copiarCuenta">📋 Copiar número de cuenta</button></div>
+          <div class="reserva-field reserva-upload"><label for="comprobante">📎 Adjuntar comprobante de pago</label><input id="comprobante" name="comprobante" type="file" accept="image/*,.pdf"><small>Puedes seleccionar una imagen o un PDF. La recepción del archivo depende de la configuración del sistema.</small></div>
+          <div class="reserva-note"><strong>¿Pagaste desde un corresponsal u otra entidad?</strong><p>También puedes enviar el comprobante por WhatsApp.</p><a href="https://wa.me/573113416655" target="_blank" rel="noopener noreferrer" class="reserva-whatsapp">💬 Enviar por WhatsApp</a></div>
+          <div class="reserva-panel-footer"><button type="button" class="reserva-secondary" id="volverBtn">← Volver a mis datos</button><button type="submit" class="reserva-button" id="enviarBtn">✓ Finalizar proceso</button></div>
+        </div>
+      </form>
+    </section>
+    <aside class="reserva-aside" aria-label="Resumen de tu inscripción">
+      <div class="reserva-summary"><span class="reserva-summary-kicker">TU INSCRIPCIÓN</span><h2>Resumen del curso</h2><div class="reserva-course-icon">🎓</div><small>Curso seleccionado</small><strong class="reserva-course-name">{{ curso }}</strong><div class="reserva-summary-divider"></div><div class="reserva-price-row"><span>Valor del curso</span><strong>${{ precio }}</strong></div><div class="reserva-price-row"><span>Separación mínima</span><strong>$200.000</strong></div><p class="reserva-summary-foot">✓ Acompañamiento durante el proceso<br>✓ Atención personalizada</p></div>
+      <div class="reserva-help"><strong>¿Necesitas ayuda?</strong><p>Estamos disponibles para orientarte sobre tu inscripción.</p><a href="https://wa.me/573113416655" target="_blank" rel="noopener noreferrer">Hablar por WhatsApp ↗</a></div>
+    </aside>
+  </main>
+  <footer class="reserva-footer">© Autoescuela SUROESTE · Andes, Antioquia</footer>
+  <script>
+    (function () {
+      const form = document.getElementById('formReserva');
+      const paso1 = document.getElementById('paso1');
+      const paso2 = document.getElementById('paso2');
+      const indicador1 = document.getElementById('indicador-1');
+      const indicador2 = document.getElementById('indicador-2');
+      const nacimiento = document.getElementById('fecha_nacimiento');
+      const sabeLeer = document.getElementById('sabe_leer');
+      const continuar = document.getElementById('continuarBtn');
+      const enviar = document.getElementById('enviarBtn');
+      // Calcula el límite de edad con fecha local y evita desbordes de fin de mes.
+      const hoy = new Date();
+      const limite = new Date(hoy.getFullYear() - 16, hoy.getMonth() - 1, hoy.getDate());
+      if (limite.getMonth() !== ((hoy.getMonth() - 1 + 12) % 12)) {
+        limite.setDate(0);
+      }
+      const iso = [limite.getFullYear(), String(limite.getMonth() + 1).padStart(2, '0'), String(limite.getDate()).padStart(2, '0')].join('-');
+      nacimiento.max = iso;
+      const avisoLectura = 'Lo sentimos. Para iniciar el proceso de formación en conducción es necesario saber leer y escribir, ya que durante el curso se deben comprender señales de tránsito, normas viales y contenidos teóricos obligatorios.';
+      sabeLeer.addEventListener('change', function () { if (this.value === 'No') alert(avisoLectura); });
+      continuar.addEventListener('click', function () {
+        // Solo valida los campos de la primera etapa; conserva los name originales.
+        const campos = paso1.querySelectorAll('input, select');
+        for (const campo of campos) {
+          if (!campo.checkValidity()) { campo.reportValidity(); return; }
         }
-
-    }
-);
-
-</script>
+        if (nacimiento.value && nacimiento.value > iso) {
+          nacimiento.setCustomValidity('Debes tener al menos 16 años y 1 mes.');
+          nacimiento.reportValidity();
+          return;
+        }
+        nacimiento.setCustomValidity('');
+        if (sabeLeer.value === 'No') { alert(avisoLectura); return; }
+        paso1.hidden = true;
+        paso2.hidden = false;
+        indicador1.classList.remove('active');
+        indicador2.classList.add('active');
+        window.scrollTo({top: 0, behavior: 'smooth'});
+      });
+      nacimiento.addEventListener('input', function () { this.setCustomValidity(''); });
+      document.getElementById('volverBtn').addEventListener('click', function () {
+        paso2.hidden = true;
+        paso1.hidden = false;
+        indicador2.classList.remove('active');
+        indicador1.classList.add('active');
+        window.scrollTo({top: 0, behavior: 'smooth'});
+      });
+      document.getElementById('copiarCuenta').addEventListener('click', function () {
+        const texto = '43800000522';
+        if (navigator.clipboard && window.isSecureContext) {
+          navigator.clipboard.writeText(texto).then(() => { this.textContent = '✓ Cuenta copiada'; }).catch(() => { window.prompt('Copia el número de cuenta:', texto); });
+        } else { window.prompt('Copia el número de cuenta:', texto); }
+      });
+      form.addEventListener('submit', function (e) {
+        if (sabeLeer.value === 'No' || !form.checkValidity()) { e.preventDefault(); form.reportValidity(); return; }
+        enviar.disabled = true;
+        enviar.textContent = 'Enviando inscripción…';
+      });
+    })();
+  </script>
+</body>
+</html>
